@@ -42,6 +42,7 @@ linux {
 
 macx {
   # CMake puts the tool libraries in bin/linux on non-Windows hosts
+  ICON = viewTS.icns
   DESTDIR = $$PWD/../bin/mac/
   LIBS += -L$$PWD/../bin/linux -ltstoolcheck -ltstoolmap
   PRE_TARGETDEPS += $$PWD/../bin/linux/libtstoolcheck.a $$PWD/../bin/linux/libtstoolmap.a
