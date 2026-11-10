@@ -1,6 +1,13 @@
-# tstools
+# viewts
 Tools for MPEG-TS streams.
 To compile use cmake for windows, linux, or macOS (see below).
+
+> **Note on lineage:** this is a *fork of a fork*. The original project is
+> [OlivierLeBozec/viewts](https://github.com/OlivierLeBozec/viewts);
+> [nriviera/tstools](https://github.com/nriviera/tstools) is a fork of it
+> (and the `origin` of this repository); this repository is a further fork
+> of `nriviera/tstools`, renamed `viewts` and maintained for macOS arm64
+> (Apple Silicon).
 
 More details in the Wiki.
 
