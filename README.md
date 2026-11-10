@@ -1,6 +1,6 @@
 # tstools
 Tools for MPEG-TS streams.
-To compile use cmake for windows or linux.
+To compile use cmake for windows, linux, or macOS (see below).
 
 More details in the Wiki.
 
@@ -8,7 +8,34 @@ More details in the Wiki.
 viewTS : display the timestamp of a ts stream.
 
 To compile first import in Qt top level CMakeLists.txt.
-Only windows is working for the moment.
+Works on Windows and macOS (Apple Silicon) with Qt 5 or Qt 6.
+
+## macOS (Apple Silicon)
+
+This fork is maintained for macOS arm64 (Apple Silicon). The build is
+verified with CMake 4.x, Apple clang, and Homebrew Qt 6.
+
+```sh
+brew install cmake qt
+```
+
+CLI tools (tscheck, tsmap, tscut) and tests:
+
+```sh
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build -j 8
+(cd build/test && ../../bin/linux/tstool_tests)
+```
+
+Artifacts are placed in `bin/linux/` (upstream directory naming, kept as-is).
+
+viewTS (Qt GUI):
+
+```sh
+mkdir -p build/viewTS && cd build/viewTS
+qmake ../../qt_tstools/viewTS.pro
+make -j 8    # -> ../../bin/mac/viewTS.app
+```
 
 ![alt text](https://github.com/OlivierLeBozec/tstools/blob/master/screenshots/pcrjitter.png)
 
