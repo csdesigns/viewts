@@ -1,5 +1,5 @@
 project(tstools CXX)
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.5...4.5)
 
 #---------------------------------------------------------------- target tstoolcheck lib
 #source lib files

@@ -2,3 +2,4 @@ cmake*
 CMake*
 Makefile
 *.cbp
+.DS_Store

@@ -5,7 +5,10 @@
 #-------------------------------------------------
 
 QT      += core gui charts widgets
-CONFIG  += static
+win32:CONFIG += static
+
+# Qt 6 dropped the QtCharts namespace (and the QT_CHARTS_USE_NAMESPACE macro)
+greaterThan(QT_MAJOR_VERSION, 5): QMAKE_CXXFLAGS += -include $$PWD/qt6_compat.h
 
 TARGET = viewTS
 TEMPLATE = app
@@ -35,6 +38,13 @@ linux {
   INCLUDEPATH += $$PWD/../bin/linux
   DEPENDPATH += $$PWD/../bin/linux
   QMAKE_CXXFLAGS += -fpermissive
+}
+
+macx {
+  # CMake puts the tool libraries in bin/linux on non-Windows hosts
+  DESTDIR = $$PWD/../bin/mac/
+  LIBS += -L$$PWD/../bin/linux -ltstoolcheck -ltstoolmap
+  PRE_TARGETDEPS += $$PWD/../bin/linux/libtstoolcheck.a $$PWD/../bin/linux/libtstoolmap.a
 }
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../bin/windows/ -ltstoolcheck -ltstoolmap
