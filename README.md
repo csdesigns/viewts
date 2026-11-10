@@ -44,6 +44,20 @@ qmake ../../qt_tstools/viewTS.pro
 make -j 8    # -> ../../bin/mac/viewTS.app
 ```
 
+### Changes in this fork
+
+All changes in this fork were made for macOS arm64 (Apple Silicon)
+compatibility:
+
+- `CMakeLists.txt` (all four): `cmake_minimum_required(VERSION 3.5...4.5)` —
+  CMake 4.x removed compatibility with 3.5 and below
+- Qt 6 build fixes in `qt_tstools/` (member function pointers,
+  `QThreadPool::clear()`, `Qt::WindowFlags`) plus the new `qt6_compat.h`
+- `viewTS.pro`: macOS install/link block (`bin/mac/viewTS.app` linking the
+  CMake-built static libraries) and `macx:ICON = viewTS.icns`
+- `viewTS.icns` / `viewTS.png`: the macOS app icon, replacing the broken
+  `CFBundleIconFile=viewTS.rc` that the Windows resource file produced
+
 ![alt text](https://github.com/OlivierLeBozec/tstools/blob/master/screenshots/pcrjitter.png)
 
 ![alt text](https://github.com/OlivierLeBozec/tstools/blob/master/screenshots/pcrptsdts.png)
